@@ -5,21 +5,11 @@ import re
 def extract_text_from_xml(source):
     """
     Extract pure text content from XML, ignoring all tags and attributes.
-
-    Args:
-        source: Either a file path (str) or XML string
-
-    Returns:
-        str: Extracted text content with normalized whitespace
     """
     try:
-        # Try parsing as a file first
-        if isinstance(source, str) and ('<' not in source or '>' not in source):
-            tree = ElementTree.parse(source)
-            root = tree.getroot()
-        else:
-            # Parse as string
-            root = ElementTree.fromstring(source)
+
+        tree = ElementTree.parse(source)
+        root = tree.getroot()
 
         # Get all text recursively
         text_parts = []
